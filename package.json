@@ -10,8 +10,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "validate-init": "node scripts/validate-init.mjs",
-    "validate-phase4": "node scripts/validate-phase4.mjs",
-    "ui-screenshots": "node scripts/ui-screenshot-review.mjs"
+    "validate-phase4": "node scripts/validate-phase4.mjs"
   },
   "dependencies": {
     "localforage": "^1.10.0"
