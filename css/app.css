@@ -456,27 +456,27 @@ menu {
 }
 
 #stats_vent:before {
-	background-image: url("../img/icon_vent.webp");
+	background-image: url("../img/ui/icons/icon_vent.webp");
 }
 
 #stats_inlet:before {
-	background-image: url("../img/icon_inlet.webp");
+	background-image: url("../img/ui/icons/icon_inlet.webp");
 }
 
 #stats_outlet:before {
-	background-image: url("../img/icon_outlet.webp");
+	background-image: url("../img/ui/icons/icon_outlet.webp");
 }
 
 #stats_heat:before {
-	background-image: url("../img/icon_heat.webp");
+	background-image: url("../img/ui/icons/icon_heat.webp");
 }
 
 #stats_power:before {
-	background-image: url("../img/icon_power.webp");
+	background-image: url("../img/ui/icons/icon_power.webp");
 }
 
 #stats_cash:before {
-	background-image: url("../img/icon_cash.webp");
+	background-image: url("../img/ui/icons/icon_cash.webp");
 }
 
 #reactor reactor-tile,
@@ -581,12 +581,12 @@ menu {
 }
 
 @keyframes explosion {
-  0%   { background: url('../img/explosion_map.webp') calc(32px * var(--asset-scale)) 0 no-repeat; }
-  100% { background: url('../img/explosion_map.webp') calc(-192px * var(--asset-scale)) 0 no-repeat; }
+  0%   { background: url('../img/fx/explosion_map.webp') calc(32px * var(--asset-scale)) 0 no-repeat; }
+  100% { background: url('../img/fx/explosion_map.webp') calc(-192px * var(--asset-scale)) 0 no-repeat; }
 }
 
 #reactor .tile.exploding {
-  background: url('../img/explosion_map.webp') calc(-192px * var(--asset-scale)) 0 no-repeat;
+  background: url('../img/fx/explosion_map.webp') calc(-192px * var(--asset-scale)) 0 no-repeat;
   animation: explosion .6s steps(7);
 }
 
@@ -603,7 +603,7 @@ menu {
 	padding: 0 1em .1em;
 	margin: 0;
 	border: 8px solid var(--color-chrome);
-	border-image: url("../img/small_button_off.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	border-image: url("../img/ui/chrome/small_button_off.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: var(--color-chrome);
 	color: var(--color-text);
 	outline: none;
@@ -628,7 +628,7 @@ menu {
 #game_controls button:focus,
 #developer_controls button:hover,
 #developer_controls button:focus {
-	border-image: url("../img/small_button_on.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	border-image: url("../img/ui/chrome/small_button_on.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: var(--color-chrome-hover);
 }
 
@@ -651,7 +651,7 @@ menu {
 #page_nav button:active,
 #game_controls button:active,
 #developer_controls button:active {
-	border-image: url("../img/small_button_down.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	border-image: url("../img/ui/chrome/small_button_down.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: var(--color-chrome-hover);
 }
 
@@ -709,7 +709,7 @@ menu {
 	padding: 0.55em 0.65em 0.65em;
 	background: rgba(0, 0, 0, 0.12);
 	border: 4px solid var(--color-surface-2);
-	border-image: url("../img/inner_border.webp") var(--border-slice-inner) var(--border-slice-inner) stretch;
+	border-image: url("../img/ui/chrome/inner_border.webp") var(--border-slice-inner) var(--border-slice-inner) stretch;
 }
 
 #options .options-group__heading {
@@ -795,19 +795,19 @@ menu {
 	width: 2.5em;
 	height: 1.25em;
 	border: 6px solid var(--color-chrome);
-	border-image: url("../img/small_button_off.webp") var(--border-slice-button-sm) var(--border-slice-button-sm) stretch;
+	border-image: url("../img/ui/chrome/small_button_off.webp") var(--border-slice-button-sm) var(--border-slice-button-sm) stretch;
 	background-color: var(--color-chrome);
 	box-sizing: border-box;
 	flex-shrink: 0;
 }
 
 .game-switch input:checked + .game-switch__track {
-	border-image: url("../img/small_button_on.webp") var(--border-slice-button-sm) var(--border-slice-button-sm) stretch;
+	border-image: url("../img/ui/chrome/small_button_on.webp") var(--border-slice-button-sm) var(--border-slice-button-sm) stretch;
 }
 
 .game-switch:active .game-switch__track,
 .game-switch input:focus-visible + .game-switch__track {
-	border-image: url("../img/small_button_down.webp") var(--border-slice-button-sm) var(--border-slice-button-sm) stretch;
+	border-image: url("../img/ui/chrome/small_button_down.webp") var(--border-slice-button-sm) var(--border-slice-button-sm) stretch;
 }
 
 .game-switch__label {
@@ -925,104 +925,104 @@ menu {
 #reactor .tile.part_uranium1,
 #upgrades .uranium .image,
 #forceful_fusion .image {
-	background-image: url("../img/cell_1_1.webp");
+	background-image: url("../img/parts/cell_1_1.webp");
 }
 
 #parts .part.part_uranium2 .image,
 #reactor .tile.part_uranium2 {
-	background-image: url("../img/cell_1_2.webp");
+	background-image: url("../img/parts/cell_1_2.webp");
 }
 
 #parts .part.part_uranium3 .image,
 #reactor .tile.part_uranium3 {
-	background-image: url("../img/cell_1_4.webp");
+	background-image: url("../img/parts/cell_1_4.webp");
 }
 
 /* plutonium */
 #parts .part.part_plutonium1 .image,
 #reactor .tile.part_plutonium1,
 #upgrades .plutonium .image {
-	background-image: url("../img/cell_2_1.webp");
+	background-image: url("../img/parts/cell_2_1.webp");
 }
 
 #parts .part.part_plutonium2 .image,
 #reactor .tile.part_plutonium2 {
-	background-image: url("../img/cell_2_2.webp");
+	background-image: url("../img/parts/cell_2_2.webp");
 }
 
 #parts .part.part_plutonium3 .image,
 #reactor .tile.part_plutonium3 {
-	background-image: url("../img/cell_2_4.webp");
+	background-image: url("../img/parts/cell_2_4.webp");
 }
 
 /* thorium */
 #parts .part.part_thorium1 .image,
 #reactor .tile.part_thorium1,
 #upgrades .thorium .image {
-	background-image: url("../img/cell_3_1.webp");
+	background-image: url("../img/parts/cell_3_1.webp");
 }
 
 #parts .part.part_thorium2 .image,
 #reactor .tile.part_thorium2 {
-	background-image: url("../img/cell_3_2.webp");
+	background-image: url("../img/parts/cell_3_2.webp");
 }
 
 #parts .part.part_thorium3 .image,
 #reactor .tile.part_thorium3 {
-	background-image: url("../img/cell_3_4.webp");
+	background-image: url("../img/parts/cell_3_4.webp");
 }
 
 /* seaborgium */
 #parts .part.part_seaborgium1 .image,
 #reactor .tile.part_seaborgium1,
 #upgrades .seaborgium .image {
-	background-image: url("../img/cell_4_1.webp");
+	background-image: url("../img/parts/cell_4_1.webp");
 }
 
 #parts .part.part_seaborgium2 .image,
 #reactor .tile.part_seaborgium2 {
-	background-image: url("../img/cell_4_2.webp");
+	background-image: url("../img/parts/cell_4_2.webp");
 }
 
 #parts .part.part_seaborgium3 .image,
 #reactor .tile.part_seaborgium3 {
-	background-image: url("../img/cell_4_4.webp");
+	background-image: url("../img/parts/cell_4_4.webp");
 }
 
 /* dolorium */
 #parts .part.part_dolorium1 .image,
 #reactor .tile.part_dolorium1,
 #upgrades .dolorium .image {
-	background-image: url("../img/cell_5_1.webp");
+	background-image: url("../img/parts/cell_5_1.webp");
 }
 
 #parts .part.part_dolorium2 .image,
 #experimental_upgrades #infused_cells .image,
 #reactor .tile.part_dolorium2 {
-	background-image: url("../img/cell_5_2.webp");
+	background-image: url("../img/parts/cell_5_2.webp");
 }
 
 #parts .part.part_dolorium3 .image,
 #reactor .tile.part_dolorium3 {
-	background-image: url("../img/cell_5_4.webp");
+	background-image: url("../img/parts/cell_5_4.webp");
 }
 
 /* nefastium */
 #parts .part.part_nefastium1 .image,
 #reactor .tile.part_nefastium1,
 #upgrades .nefastium .image {
-	background-image: url("../img/cell_6_1.webp");
+	background-image: url("../img/parts/cell_6_1.webp");
 }
 
 #parts .part.part_nefastium2 .image,
 #reactor .tile.part_nefastium2 {
-	background-image: url("../img/cell_6_2.webp");
+	background-image: url("../img/parts/cell_6_2.webp");
 }
 
 #parts .part.part_nefastium3 .image,
 #experimental_upgrades #unleashed_cells .image,
 #reactor .tile.part_nefastium3 {
-	background-image: url("../img/cell_6_4.webp");
+	background-image: url("../img/parts/cell_6_4.webp");
 }
 
 /* protium */
@@ -1030,18 +1030,18 @@ menu {
 #reactor .tile.part_protium1,
 #experimental_upgrades #protium_cells .image,
 #upgrades .protium .image {
-	background-image: url("../img/xcell_1_1.webp");
+	background-image: url("../img/parts/xcell_1_1.webp");
 }
 
 #parts_section .part.part_protium2 .image,
 #experimental_upgrades #unstable_protium .image,
 #reactor .tile.part_protium2 {
-	background-image: url("../img/xcell_1_2.webp");
+	background-image: url("../img/parts/xcell_1_2.webp");
 }
 
 #parts_section .part.part_protium3 .image,
 #reactor .tile.part_protium3 {
-	background-image: url("../img/xcell_1_4.webp");
+	background-image: url("../img/parts/xcell_1_4.webp");
 }
 
   /* //////////////////////////
@@ -1053,34 +1053,34 @@ menu {
 #perpetual_reflectors .image,
 #parts .part.part_reflector1 .image,
 #reactor .tile.part_reflector1 {
-	background-image: url("../img/reflector_1.webp");
+	background-image: url("../img/parts/reflector_1.webp");
 }
 
 #parts .part.part_reflector2 .image,
 #reactor .tile.part_reflector2 {
-	background-image: url("../img/reflector_2.webp");
+	background-image: url("../img/parts/reflector_2.webp");
 }
 
 #parts .part.part_reflector3 .image,
 #reactor .tile.part_reflector3 {
-	background-image: url("../img/reflector_3.webp");
+	background-image: url("../img/parts/reflector_3.webp");
 }
 
 #parts .part.part_reflector4 .image,
 #reactor .tile.part_reflector4 {
-	background-image: url("../img/reflector_4.webp");
+	background-image: url("../img/parts/reflector_4.webp");
 }
 
 #parts .part.part_reflector5 .image,
 #experimental_upgrades #full_spectrum_reflectors .image,
 #reactor .tile.part_reflector5 {
-	background-image: url("../img/reflector_5.webp");
+	background-image: url("../img/parts/reflector_5.webp");
 }
 
 #parts .part.part_reflector6 .image,
 #experimental_upgrades #heat_reflection .image,
 #reactor .tile.part_reflector6 {
-	background-image: url("../img/reflector_6.webp");
+	background-image: url("../img/parts/reflector_6.webp");
 }
 
   /* //////////////////////////
@@ -1094,34 +1094,34 @@ menu {
 #active_exchangers .image,
 #improved_power_lines .image,
 #improved_wiring .image {
-	background-image: url("../img/capacitor_1.webp");
+	background-image: url("../img/parts/capacitor_1.webp");
 }
 
 #parts .part.part_capacitor2 .image,
 #reactor .tile.part_capacitor2{
-	background-image: url("../img/capacitor_2.webp");
+	background-image: url("../img/parts/capacitor_2.webp");
 }
 
 #parts .part.part_capacitor3 .image,
 #reactor .tile.part_capacitor3{
-	background-image: url("../img/capacitor_3.webp");
+	background-image: url("../img/parts/capacitor_3.webp");
 }
 
 #parts .part.part_capacitor4 .image,
 #reactor .tile.part_capacitor4{
-	background-image: url("../img/capacitor_4.webp");
+	background-image: url("../img/parts/capacitor_4.webp");
 }
 
 #parts .part.part_capacitor5 .image,
 #experimental_upgrades #quantum_buffering .image,
 #reactor .tile.part_capacitor5 {
-	background-image: url("../img/capacitor_5.webp");
+	background-image: url("../img/parts/capacitor_5.webp");
 }
 
 #parts .part.part_capacitor6 .image,
 #experimental_upgrades #experimental_capacitance .image,
 #reactor .tile.part_capacitor6{
-	background-image: url("../img/capacitor_6.webp");
+	background-image: url("../img/parts/capacitor_6.webp");
 }
 
   /* //////////////////////////
@@ -1132,166 +1132,166 @@ menu {
 #parts .part.part_vent1 .image,
 #reactor .tile.part_vent1,
 #improved_heat_vents .image {
-	background-image: url("../img/vent_1.webp");
+	background-image: url("../img/parts/vent_1.webp");
 }
 
 #parts .part.part_vent2 .image,
 #reactor .tile.part_vent2 {
-	background-image: url("../img/vent_2.webp");
+	background-image: url("../img/parts/vent_2.webp");
 }
 
 #parts .part.part_vent3 .image,
 #reactor .tile.part_vent3 {
-	background-image: url("../img/vent_3.webp");
+	background-image: url("../img/parts/vent_3.webp");
 }
 
 #parts .part.part_vent4 .image,
 #reactor .tile.part_vent4 {
-	background-image: url("../img/vent_4.webp");
+	background-image: url("../img/parts/vent_4.webp");
 }
 
 #parts .part.part_vent5 .image,
 #experimental_upgrades #fluid_hyperdynamics .image,
 #reactor .tile.part_vent5 {
-	background-image: url("../img/vent_5.webp");
+	background-image: url("../img/parts/vent_5.webp");
 }
 
 #parts .part.part_vent6 .image,
 #experimental_upgrades #vortex_cooling .image,
 #reactor .tile.part_vent6 {
-	background-image: url("../img/vent_6.webp");
+	background-image: url("../img/parts/vent_6.webp");
 }
 
 /* Heat Exchangers */
 #parts .part.part_heat_exchanger1 .image,
 #reactor .tile.part_heat_exchanger1,
 #improved_heat_exchangers .image {
-	background-image: url("../img/exchanger_1.webp");
+	background-image: url("../img/parts/exchanger_1.webp");
 }
 
 #parts .part.part_heat_exchanger2 .image,
 #reactor .tile.part_heat_exchanger2 {
-	background-image: url("../img/exchanger_2.webp");
+	background-image: url("../img/parts/exchanger_2.webp");
 }
 
 #parts .part.part_heat_exchanger3 .image,
 #reactor .tile.part_heat_exchanger3 {
-	background-image: url("../img/exchanger_3.webp");
+	background-image: url("../img/parts/exchanger_3.webp");
 }
 
 #parts .part.part_heat_exchanger4 .image,
 #reactor .tile.part_heat_exchanger4 {
-	background-image: url("../img/exchanger_4.webp");
+	background-image: url("../img/parts/exchanger_4.webp");
 }
 
 #parts .part.part_heat_exchanger5 .image,
 #experimental_upgrades #fractal_piping .image,
 #reactor .tile.part_heat_exchanger5 {
-	background-image: url("../img/exchanger_5.webp");
+	background-image: url("../img/parts/exchanger_5.webp");
 }
 
 #parts .part.part_heat_exchanger6 .image,
 #experimental_upgrades #underground_heat_extraction .image,
 #reactor .tile.part_heat_exchanger6 {
-	background-image: url("../img/exchanger_6.webp");
+	background-image: url("../img/parts/exchanger_6.webp");
 }
 
 /* Heat Inlets */
 #parts .part.part_heat_inlet1 .image,
 #reactor .tile.part_heat_inlet1 {
-	background-image: url("../img/inlet_1.webp");
+	background-image: url("../img/parts/inlet_1.webp");
 }
 
 #parts .part.part_heat_inlet2 .image,
 #reactor .tile.part_heat_inlet2 {
-	background-image: url("../img/inlet_2.webp");
+	background-image: url("../img/parts/inlet_2.webp");
 }
 
 #parts .part.part_heat_inlet3 .image,
 #reactor .tile.part_heat_inlet3 {
-	background-image: url("../img/inlet_3.webp");
+	background-image: url("../img/parts/inlet_3.webp");
 }
 
 #parts .part.part_heat_inlet4 .image,
 #reactor .tile.part_heat_inlet4 {
-	background-image: url("../img/inlet_4.webp");
+	background-image: url("../img/parts/inlet_4.webp");
 }
 
 #parts .part.part_heat_inlet5 .image,
 #reactor .tile.part_heat_inlet5 {
-	background-image: url("../img/inlet_5.webp");
+	background-image: url("../img/parts/inlet_5.webp");
 }
 
 #parts .part.part_heat_inlet6 .image,
 #experimental_upgrades #vortex_extraction .image,
 #reactor .tile.part_heat_inlet6 {
-	background-image: url("../img/inlet_6.webp");
+	background-image: url("../img/parts/inlet_6.webp");
 }
 
 /* Heat Outlets */
 #parts .part.part_heat_outlet1 .image,
 #reactor .tile.part_heat_outlet1 {
-	background-image: url("../img/outlet_1.webp");
+	background-image: url("../img/parts/outlet_1.webp");
 }
 
 #parts .part.part_heat_outlet2 .image,
 #reactor .tile.part_heat_outlet2 {
-	background-image: url("../img/outlet_2.webp");
+	background-image: url("../img/parts/outlet_2.webp");
 }
 
 #parts .part.part_heat_outlet3 .image,
 #reactor .tile.part_heat_outlet3 {
-	background-image: url("../img/outlet_3.webp");
+	background-image: url("../img/parts/outlet_3.webp");
 }
 
 #parts .part.part_heat_outlet4 .image,
 #reactor .tile.part_heat_outlet4 {
-	background-image: url("../img/outlet_4.webp");
+	background-image: url("../img/parts/outlet_4.webp");
 }
 
 #parts .part.part_heat_outlet5 .image,
 #reactor .tile.part_heat_outlet5 {
-	background-image: url("../img/outlet_5.webp");
+	background-image: url("../img/parts/outlet_5.webp");
 }
 
 #parts .part.part_heat_outlet6 .image,
 #experimental_upgrades #explosive_ejection .image,
 #reactor .tile.part_heat_outlet6 {
-	background-image: url("../img/outlet_6.webp");
+	background-image: url("../img/parts/outlet_6.webp");
 }
 
 /* Coolant Cells */
 #improved_coolant_cells .image,
 #parts .part.part_coolant_cell1 .image,
 #reactor .tile.part_coolant_cell1 {
-	background-image: url("../img/coolant_1.webp");
+	background-image: url("../img/parts/coolant_1.webp");
 }
 
 #parts .part.part_coolant_cell2 .image,
 #reactor .tile.part_coolant_cell2 {
-	background-image: url("../img/coolant_2.webp");
+	background-image: url("../img/parts/coolant_2.webp");
 }
 
 #parts .part.part_coolant_cell3 .image,
 #reactor .tile.part_coolant_cell3 {
-	background-image: url("../img/coolant_3.webp");
+	background-image: url("../img/parts/coolant_3.webp");
 }
 
 #parts .part.part_coolant_cell4 .image,
 #reactor .tile.part_coolant_cell4 {
-	background-image: url("../img/coolant_4.webp");
+	background-image: url("../img/parts/coolant_4.webp");
 }
 
 #parts .part.part_coolant_cell5 .image,
 #experimental_upgrades #ultracryonics .image,
 #reactor .tile.part_coolant_cell5 {
-	background-image: url("../img/coolant_5.webp");
+	background-image: url("../img/parts/coolant_5.webp");
 }
 
 #parts .part.part_coolant_cell6 .image,
 #experimental_upgrades #thermionic_conversion .image,
 #reactor .tile.part_coolant_cell6 {
-	background-image: url("../img/coolant_6.webp");
+	background-image: url("../img/parts/coolant_6.webp");
 }
 
 /* Platings */
@@ -1301,34 +1301,34 @@ menu {
 #reinforced_heat_exchangers .image,
 #upgrades #improved_piping .image,
 #upgrades #improved_alloys .image {
-	background-image: url("../img/plating_1.webp");
+	background-image: url("../img/parts/plating_1.webp");
 }
 
 #parts .part.part_reactor_plating2 .image,
 #reactor .tile.part_reactor_plating2 {
-	background-image: url("../img/plating_2.webp");
+	background-image: url("../img/parts/plating_2.webp");
 }
 
 #parts .part.part_reactor_plating3 .image,
 #reactor .tile.part_reactor_plating3 {
-	background-image: url("../img/plating_3.webp");
+	background-image: url("../img/parts/plating_3.webp");
 }
 
 #parts .part.part_reactor_plating4 .image,
 #reactor .tile.part_reactor_plating4 {
-	background-image: url("../img/plating_4.webp");
+	background-image: url("../img/parts/plating_4.webp");
 }
 
 #parts .part.part_reactor_plating5 .image,
 #experimental_upgrades #phlembotinum_core .image,
 #reactor .tile.part_reactor_plating5 {
-	background-image: url("../img/plating_5.webp");
+	background-image: url("../img/parts/plating_5.webp");
 }
 
 #parts .part.part_reactor_plating6 .image,
 #experimental_upgrades #micro_capacitance .image,
 #reactor .tile.part_reactor_plating6 {
-	background-image: url("../img/plating_6.webp");
+	background-image: url("../img/parts/plating_6.webp");
 }
 
 /* Particle Accelerators */
@@ -1336,44 +1336,44 @@ menu {
 #upgrades #improved_particle_accelerators .image,
 #experimental_upgrades #improved_particle_accelerators1 .image,
 #reactor .tile.part_particle_accelerator1 {
-	background-image: url("../img/accelerator_1.webp");
+	background-image: url("../img/parts/accelerator_1.webp");
 }
 
 #parts .part.part_particle_accelerator2 .image,
 #experimental_upgrades #improved_particle_accelerators2 .image,
 #reactor .tile.part_particle_accelerator2 {
-	background-image: url("../img/accelerator_2.webp");
+	background-image: url("../img/parts/accelerator_2.webp");
 }
 
 #parts .part.part_particle_accelerator3 .image,
 #experimental_upgrades #improved_particle_accelerators3 .image,
 #reactor .tile.part_particle_accelerator3 {
-	background-image: url("../img/accelerator_3.webp");
+	background-image: url("../img/parts/accelerator_3.webp");
 }
 
 #parts .part.part_particle_accelerator4 .image,
 #experimental_upgrades #improved_particle_accelerators4 .image,
 #reactor .tile.part_particle_accelerator4 {
-	background-image: url("../img/accelerator_4.webp");
+	background-image: url("../img/parts/accelerator_4.webp");
 }
 
 #parts .part.part_particle_accelerator5 .image,
 #experimental_upgrades #improved_particle_accelerators5 .image,
 #reactor .tile.part_particle_accelerator5 {
-	background-image: url("../img/accelerator_5.webp");
+	background-image: url("../img/parts/accelerator_5.webp");
 }
 
 #parts .part.part_particle_accelerator6 .image,
 #experimental_upgrades #improved_particle_accelerators6 .image,
 #experimental_upgrades #singularity_harnessing .image,
 #reactor .tile.part_particle_accelerator6 {
-	background-image: url("../img/accelerator_6.webp");
+	background-image: url("../img/parts/accelerator_6.webp");
 }
 
 /* Other */
 
 #experimental_upgrades #laboratory .image {
-	background-image: url("../img/lab.webp");
+	background-image: url("../img/parts/lab.webp");
 }
 
   /* //////////////////////////
@@ -1405,7 +1405,7 @@ menu {
 /* Time */
 #improved_reflector_density .image:before,
 #all_upgrades .cell_tick .image:before {
-	background-image: url("../img/status_time.webp");
+	background-image: url("../img/ui/status/status_time.webp");
 	z-index: 2;
 }
 
@@ -1416,7 +1416,7 @@ menu {
 #forceful_fusion .image:before,
 #improved_wiring .image:before,
 #improved_alloys .image:before {
-	background-image: url("../img/status_plus.webp");
+	background-image: url("../img/ui/status/status_plus.webp");
 	z-index: 2;
 }
 
@@ -1425,7 +1425,7 @@ menu {
 #improved_power_lines .image:before,
 #improved_piping .image:before,
 #all_upgrades .cell_power .image:before {
-	background-image: url("../img/status_bolt.webp");
+	background-image: url("../img/ui/status/status_bolt.webp");
 	z-index: 2;
 }
 
@@ -1433,7 +1433,7 @@ menu {
 #perpetual_capacitors .image:before,
 #perpetual_reflectors .image:before,
 #all_upgrades .cell_perpetual .image:before {
-	background-image: url("../img/status_infinity.webp");
+	background-image: url("../img/ui/status/status_infinity.webp");
 	z-index: 2;
 }
 
@@ -1468,20 +1468,20 @@ menu {
 }*/
 
 #chronometer.upgrade .image {
-	background-image: url("../img/upgrade_flux.webp");
+	background-image: url("../img/ui/upgrades/upgrade_flux.webp");
 }
 
 #heat_outlet_control_operator.upgrade .image,
 #heat_control_operator.upgrade .image {
-	background-image: url("../img/upgrade_computer.webp");
+	background-image: url("../img/ui/upgrades/upgrade_computer.webp");
 }
 
 #expand_reactor_cols.upgrade .image {
-	background-image: url("../img/upgrade_cols.webp");
+	background-image: url("../img/ui/upgrades/upgrade_cols.webp");
 }
 
 #expand_reactor_rows.upgrade .image {
-	background-image: url("../img/upgrade_rows.webp");
+	background-image: url("../img/ui/upgrades/upgrade_rows.webp");
 }
 
 #all_upgrades .unaffordable .image {
@@ -1618,7 +1618,7 @@ dialog .dialog_actions button {
 	padding: 0 1em 0.1em;
 	margin: 0;
 	border: 8px solid var(--color-chrome);
-	border-image: url("../img/small_button_off.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	border-image: url("../img/ui/chrome/small_button_off.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: var(--color-chrome);
 	color: var(--color-text);
 	outline: none;
@@ -1629,12 +1629,12 @@ dialog .dialog_actions button {
 
 dialog .dialog_actions button:hover,
 dialog .dialog_actions button:focus {
-	border-image: url("../img/small_button_on.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	border-image: url("../img/ui/chrome/small_button_on.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: var(--color-chrome-hover);
 }
 
 dialog .dialog_actions button:active {
-	border-image: url("../img/small_button_down.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	border-image: url("../img/ui/chrome/small_button_down.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	transform: translateY(2px);
 }
 
@@ -1683,7 +1683,7 @@ dialog #txtImportExport {
 #main:before {
 	content: " ";
 	border: 10px solid var(--color-frame);
-	border-image: url("../img/connector_border.webp") var(--border-slice-connector) var(--border-slice-connector) stretch;
+	border-image: url("../img/ui/chrome/connector_border.webp") var(--border-slice-connector) var(--border-slice-connector) stretch;
 	background-color: var(--color-frame);
 	position: absolute;
 	left: 4px;
@@ -1695,7 +1695,7 @@ dialog #txtImportExport {
 
 #main .panel_holder:first-child .panel:first-child {
 	border: 12px solid var(--color-surface-1);
-	border-image: url("../img/panel_border_first_first.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
+	border-image: url("../img/ui/chrome/panel_border_first_first.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
 	background-color: var(--color-surface-1);
 	margin: 0 3px 0 0;
 	padding: 6px 0 2px 6px;
@@ -1703,7 +1703,7 @@ dialog #txtImportExport {
 
 #main .panel_holder:first-child .panel:last-child {
 	border: 12px solid var(--color-surface-1);
-	border-image: url("../img/panel_border_first_last.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
+	border-image: url("../img/ui/chrome/panel_border_first_last.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
 	background-color: var(--color-surface-1);
 	margin: 4px 3px 0 0;
 	padding: 2px 0 6px 6px;
@@ -1714,20 +1714,20 @@ dialog #txtImportExport {
 
 #main #primary > .panel {
 	border: 12px solid var(--color-surface-1);
-	border-image: url("../img/panel_border_last_middle.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
+	border-image: url("../img/ui/chrome/panel_border_last_middle.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
 	background-color: var(--color-surface-1);
 	margin: 0 0 4px 0;
 	padding: 2px 6px 2px 2px;
 }
 
 #main #primary > .panel:first-child {
-	border-image: url("../img/panel_border_last_first.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
+	border-image: url("../img/ui/chrome/panel_border_last_first.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
 	margin: 0 0 4px 0;
 	padding: 6px 4px 2px 2px;
 }
 
 #main #primary > .panel:last-child {
-	border-image: url("../img/panel_border_last_last.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
+	border-image: url("../img/ui/chrome/panel_border_last_last.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
 	padding: 0 6px 6px 2px;
 	margin: 0;
 	-webkit-flex: 1;
@@ -1737,7 +1737,7 @@ dialog #txtImportExport {
 #reactor_stats .stat,
 #main .subpanel {
 	border: 4px solid var(--color-surface-2);
-	border-image: url("../img/inner_border.webp") var(--border-slice-inner) var(--border-slice-inner) stretch;
+	border-image: url("../img/ui/chrome/inner_border.webp") var(--border-slice-inner) var(--border-slice-inner) stretch;
 }
 
 /*#parts_nav_top,
@@ -1751,7 +1751,7 @@ dialog #txtImportExport {
 
 #parts_nav_top {
 	border: 8px solid #eee;
-	border-image: url("../img/inner_border_alt.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	border-image: url("../img/ui/chrome/inner_border_alt.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: var(--color-chrome);
 	width: 100%;
 	top: 0;
@@ -1759,18 +1759,18 @@ dialog #txtImportExport {
 
 #parts_nav_top:hover,
 #parts_nav_top:focus {
-	border-image: url("../img/inner_border_alt_active.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	border-image: url("../img/ui/chrome/inner_border_alt_active.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: #96a0bb;
 }
 
 #parts_nav_top:active {
-	border-image: url("../img/inner_border_alt_down.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	border-image: url("../img/ui/chrome/inner_border_alt_down.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: #96a0bb;
 }*/
 
 #stats_section button {
 	border: 8px solid var(--color-chrome);
-	border-image: url("../img/inner_border_alt_flip.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	border-image: url("../img/ui/chrome/inner_border_alt_flip.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: var(--color-chrome);
 	bottom: 0;
 	color: var(--color-text);
@@ -1778,11 +1778,11 @@ dialog #txtImportExport {
 
 #stats_section button:hover,
 #stats_section button:focus {
-	border-image: url("../img/inner_border_alt_flip_active.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	border-image: url("../img/ui/chrome/inner_border_alt_flip_active.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: #96a0bb;
 }
 
 #stats_section button:active {
-	border-image: url("../img/inner_border_alt_flip_down.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	border-image: url("../img/ui/chrome/inner_border_alt_flip_down.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: #96a0bb;
 }

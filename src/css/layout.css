@@ -75,7 +75,7 @@
 		padding: 0 52px 0 0;
 		margin: 0;
 		border: 12px solid #eee;
-		border-image: url("../../img/panel_border.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
+		border-image: url("../../img/ui/chrome/panel_border.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
 		border-top: 0;
 		border-left: 0;
 		border-right: 0;
@@ -617,7 +617,7 @@
 		margin: 0;
 		padding: 18px 2px 2px 2px;
 		border: 12px solid #eee;
-		border-image: url("../../img/panel_border.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
+		border-image: url("../../img/ui/chrome/panel_border.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
 		border-top: 0;
 		border-left: 0;
 		border-right: 0;

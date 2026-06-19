@@ -26,7 +26,7 @@
 */
 
 #reactor {
-	background: url(../img/tile.webp);
+	background: url(../img/grid/tile.webp);
 	background-repeat: repeat;
 	background-size: var(--space-tile) var(--space-tile);
 }
