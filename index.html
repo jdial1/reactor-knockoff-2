@@ -13,8 +13,11 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="src/css/tokens.css">
 	<link rel="stylesheet" href="css/app.css">
 	<link rel="stylesheet" href="css/app.perf.css">
+	<link rel="stylesheet" href="src/css/layout.css">
+	<link rel="stylesheet" href="css/app.polish.css">
 	<link rel="stylesheet" href="css/cms.css">
 </head>
 <body>
@@ -77,6 +80,7 @@
 
 				<!-- -- Parts -- -->
 				<section id="parts_section" class="panel">
+					<button id="parts_drawer_toggle" type="button" aria-label="Toggle parts drawer">&#9660;</button>
 					<h2 class="heading">Parts</h2>
 
 					<div id="all_parts">
@@ -110,46 +114,14 @@
 			<div id="primary" class="panel_holder">
 				<!-- -- Top -- -->
 				<div id="tooltip_nav" class="panel">
-					<!-- Nav -->
 					<menu id="nav">
-						<div class="flex_nav">
-							<menu>
-								<button id="options" class="nav" data-section="reactor_upgrades" data-page="options_section">Options</button>
-								<button id="show_help" class="nav" data-section="reactor_upgrades" data-page="help_section">Help</button>
-								<button id="show_about" class="nav" data-section="reactor_upgrades" data-page="about_section">About</button>
-							</menu>
-
-							<menu>
-								<button id="auto_sell_toggle"></button>
-								<button id="auto_buy_toggle"></button>
-							</menu>
-						</div>
-
-						<div class="flex_nav">
-							<menu>
-								<button id="time_flux_toggle"></button>
-							</menu>
-
-							<menu>
-								<button id="heat_control_toggle"></button>
-							</menu>
-						</div>
-
-						<div class="flex_nav">
-							<menu>
-								<button id="show_reactor" class="nav" data-section="reactor_upgrades" data-page="reactor_section">Reactor</button>
-								<button id="show_upgrades" class="nav" data-section="reactor_upgrades" data-page="upgrades_section">Upgrades</button>
-								<button id="show_experiments" class="nav" data-section="reactor_upgrades" data-page="experimental_upgrades_section">Experiments</button>
-							</menu>
-
-							<menu>
-								<button id="pause_toggle"></button>
-							</menu>
-						</div>
+						<menu id="secondary_nav">
+							<button id="show_help" class="nav" data-section="reactor_upgrades" data-page="help_section">Help</button>
+							<button id="show_about" class="nav" data-section="reactor_upgrades" data-page="about_section">About</button>
+						</menu>
 					</menu>
 
-					<!-- -- Tooltip -- -->
-					<section id="tooltip">
+					<div id="tile-inspector" role="tooltip">
 						<div id="tooltip_data" class="subpanel">
 							<p id="tooltip_cost" title="Cost"></p>
 							<p id="tooltip_heat_per_wrapper" title="Heat per tick">
@@ -177,7 +149,7 @@
 								<p id="tooltip_description" title="Description" class="explanitory"></p>
 							</div>
 						</div>
-					</section>
+					</div>
 				</div>
 
 				<!-- -- Middle -- -->
@@ -208,11 +180,38 @@
 						</header>
 						<!-- the javascript code should prevent the context menu from showing but
 						     someone reported a issue on it https://github.com/asl97/reactor-knockoff/pull/1 -->
-						<div id="reactor_wrapper" oncontextmenu="return false;">
-							<div id="tile_wrapper" class="subpanel">
-								<div id="reactor"></div>
+						<div id="reactor_viewport">
+							<button type="button" id="macro_mode_toggle" class="macro-mode-fab" aria-pressed="false">Macro Mode</button>
+							<div id="macro_action_bar" class="macro-action-bar" hidden>
+								<button type="button" class="macro-action" data-macro-action="paint">Paint</button>
+								<button type="button" class="macro-action" data-macro-action="row">Row</button>
+								<button type="button" class="macro-action" data-macro-action="column">Col</button>
+								<button type="button" class="macro-action" data-macro-action="checker">Check</button>
+								<button type="button" class="macro-action" data-macro-action="replace">Replace</button>
+								<button type="button" class="macro-action" data-macro-action="sell">Sell</button>
+								<label class="macro-stride">
+									Stride
+									<select id="macro_stride">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+									</select>
+								</label>
 							</div>
-							<div id="reactor_background"></div>
+							<div id="reactor_canvas">
+								<div id="reactor_wrapper" oncontextmenu="return false;">
+									<div id="tile_wrapper" class="subpanel">
+										<div id="reactor"></div>
+									</div>
+									<div id="reactor_background"></div>
+								</div>
+							</div>
 						</div>
 					</section>
 
@@ -228,6 +227,16 @@
 							<p>Particle accelerators = exotic particles (EP)</p>
 							<p>EP = more upgrades and new toys for more power, heat and money!</p>
 							<p>TF = Time Flux = Offline time accumulated (speeds game up when enabled)</p>
+							<h4>Mobile Macro Mode</h4>
+							<p>On mobile, enable <strong>Macro Mode</strong> on the reactor screen to use bulk editing gestures:</p>
+							<ul>
+								<li>Select a part, turn on Macro Mode, choose an action, then:</li>
+								<li><strong>Paint</strong> — drag across tiles to place a line of parts</li>
+								<li><strong>Row / Col / Check / Replace / Sell</strong> — tap a tile with that action selected</li>
+								<li><strong>Two-finger tap</strong> — sell all matching parts on the tapped tile</li>
+								<li><strong>Stride</strong> — spacing for row/column fills (same as desktop number keys 2–9)</li>
+							</ul>
+							<p>Desktop hotkeys: Ctrl = row, Alt = column, Shift = ignore part filter, Ctrl+Alt+Shift = checkerboard.</p>
 							<div class="has_spoiler">
 								<h4>Exotic Particle setup</h4>
 								<p>
@@ -236,7 +245,7 @@
 									See below for an example:
 								</p>
 								<button class="show_spoiler">Show Spoilers</button>
-								<p class="spoiler"><img src="img/help/pa_spoiler.png" alt="Particle Accelerator setups"></p>
+								<p class="spoiler"><img src="img/help/pa_spoiler.webp" alt="Particle Accelerator setups"></p>
 							</div>
 						</div>
 					</section>
@@ -245,32 +254,93 @@
 					<section id="options_section" class="page">
 						<h2 class="heading">Options</h2>
 						<div id="options" class="subpanel explanitory cms">
-							<p><button id="enable_google_drive_save">Enable Google Drive Online Save</button></p>
-							<p><button id="enable_local_save">Enable Local Save Only</button></p>
-							<div>
-								<p><button id="trigger_save">Save game</button>
-								<button id="export_save">Export save</button>
-								<button id="download_save">Download save</button>
-								<button id="import_save">Import save</button>
-								<button id="reset_game">Reset game</button></p>
-								<dialog id="Import_Export_dialog" style="padding: 0; border: none;">
-									<div class="panel">
-										<form method="dialog" class="subpanel">
-											<menu style="float: right">
-												<button id="Import_Export_close_button" type="reset">Cancel</button>
-												<button id="import_button" type="submit">Import</button>
-											</menu>
-											<section>
-												<textarea id="txtImportExport" rows="10" cols="75"></textarea>
-											</section>
-										</form>
+							<nav class="options-nav" aria-label="Help and about">
+								<button class="nav" data-section="reactor_upgrades" data-page="help_section">Help</button>
+								<button class="nav" data-section="reactor_upgrades" data-page="about_section">About</button>
+							</nav>
+							<div class="options-groups">
+								<section class="options-group">
+									<h3 class="options-group__heading heading">Gameplay</h3>
+									<menu id="game_controls" class="options-group__switches">
+										<label class="game-switch" for="auto_sell_toggle">
+											<input type="checkbox" id="auto_sell_toggle" role="switch" />
+											<span class="game-switch__track" aria-hidden="true"></span>
+											<span class="game-switch__label">Enable Auto Sell</span>
+										</label>
+										<label class="game-switch" for="auto_buy_toggle">
+											<input type="checkbox" id="auto_buy_toggle" role="switch" />
+											<span class="game-switch__track" aria-hidden="true"></span>
+											<span class="game-switch__label">Enable Auto Buy</span>
+										</label>
+										<label class="game-switch" for="time_flux_toggle">
+											<input type="checkbox" id="time_flux_toggle" role="switch" />
+											<span class="game-switch__track" aria-hidden="true"></span>
+											<span class="game-switch__label">Enable Time Flux</span>
+										</label>
+										<label class="game-switch" for="heat_control_toggle">
+											<input type="checkbox" id="heat_control_toggle" role="switch" />
+											<span class="game-switch__track" aria-hidden="true"></span>
+											<span class="game-switch__label">Enable Heat Controller</span>
+										</label>
+										<label class="game-switch" for="pause_toggle">
+											<input type="checkbox" id="pause_toggle" role="switch" />
+											<span class="game-switch__track" aria-hidden="true"></span>
+											<span class="game-switch__label">Pause</span>
+										</label>
+									</menu>
+								</section>
+								<section class="options-group">
+									<h3 class="options-group__heading heading">Device</h3>
+									<menu class="options-group__switches">
+										<label class="game-switch" for="haptics_toggle">
+											<input type="checkbox" id="haptics_toggle" role="switch" checked />
+											<span class="game-switch__track" aria-hidden="true"></span>
+											<span class="game-switch__label">Enable Haptics</span>
+										</label>
+									</menu>
+								</section>
+								<section class="options-group">
+									<h3 class="options-group__heading heading">Cloud Save</h3>
+									<div class="options-group__actions options-group__actions--stack">
+										<button id="enable_google_drive_save">Enable Google Drive Online Save</button>
+										<button id="enable_local_save">Enable Local Save Only</button>
 									</div>
-								</dialog>
-							</div>
-							<div>
-								<p><button id="speed_hack">Speed Hack</button>
-								<button id="offline_tick">Offline Tick</button>
-								</p>
+								</section>
+								<section class="options-group">
+									<h3 class="options-group__heading heading">Save Data</h3>
+									<div class="options-group__actions">
+										<button id="trigger_save">Save game</button>
+										<button id="export_save">Export save</button>
+										<button id="download_save">Download save</button>
+										<button id="import_save">Import save</button>
+									</div>
+									<dialog id="Import_Export_dialog">
+										<div class="panel">
+											<form method="dialog" class="subpanel">
+												<section>
+													<textarea id="txtImportExport" rows="10" cols="75"></textarea>
+												</section>
+												<menu class="dialog_actions">
+													<button id="Import_Export_close_button" type="reset">Cancel</button>
+													<button id="import_button" type="submit">Import</button>
+												</menu>
+											</form>
+										</div>
+									</dialog>
+								</section>
+								<section class="options-group options-group--danger">
+									<h3 class="options-group__heading heading">Reset</h3>
+									<div class="options-group__actions">
+										<button id="reset_game" class="options-button--danger">Reset game</button>
+									</div>
+								</section>
+								<section class="options-group options-group--dev">
+									<h3 class="options-group__heading heading">Developer</h3>
+									<menu id="developer_controls" class="options-group__actions">
+										<button id="speed_hack">Speed Hack</button>
+										<button id="offline_tick">Offline Tick</button>
+									</menu>
+								</section>
 							</div>
 						</div>
 					</section>
@@ -430,35 +500,60 @@
 								<div id="experimental_parts"></div>
 							</div>
 
-							<div id="reboot_section" class="explanitory">
-								<button id="reboot">Reboot for <span id="reboot_exotic_particles">0</span> Exotic Particles (EP)</button>
-								<p>
-									Rebooting the reactor will remove all parts, regular upgrades and money. Only your current experimental upgrades and EP will stay with you.
-								</p>
-							</div>
+							<div id="reboot_controls">
+								<div id="reboot_section" class="explanitory">
+									<button id="reboot">Reboot for <span id="reboot_exotic_particles">0</span> Exotic Particles (EP)</button>
+									<p>
+										Rebooting the reactor will remove all parts, regular upgrades and money. Only your current experimental upgrades and EP will stay with you.
+									</p>
+								</div>
 
-							<div id="refund_section" class="explanitory">
-								<button id="refund">Reboot and refund <span id="refund_exotic_particles">0</span> Exotic Particles</button>
-								<p>
-									All of the above applies, however this will undo all your experiment upgrades and refund all your Exotic Particles.
-								</p>
+								<div id="refund_section" class="explanitory">
+									<button id="refund">Reboot and refund <span id="refund_exotic_particles">0</span> Exotic Particles</button>
+									<p>
+										All of the above applies, however this will undo all your experiment upgrades and refund all your Exotic Particles.
+									</p>
+								</div>
 							</div>
 						</section>
 					</div>
 				</div>
 			</div>
+
+			<menu id="page_nav">
+				<button id="show_reactor" class="nav active" data-section="reactor_upgrades" data-page="reactor_section">Reactor</button>
+				<button id="show_upgrades" class="nav" data-section="reactor_upgrades" data-page="upgrades_section">Upgrades</button>
+				<button id="show_experiments" class="nav" data-section="reactor_upgrades" data-page="experimental_upgrades_section" aria-label="Experiments"><span class="nav-label-full">Experiments</span><span class="nav-label-short">Labs</span></button>
+				<button id="options" class="nav" data-section="reactor_upgrades" data-page="options_section">Options</button>
+			</menu>
 		</main>
 	</div>
 
-	<script src="js/app.compat.js"></script>
-	<script src="js/app.globals.js"></script>
-	<script src="js/app.parts.js"></script>
-	<script src="js/app.upgrades.js"></script>
-	<script src="js/app.objectives.js"></script>
-	<script src="js/app.ui.js"></script>
-	<script src="js/app.upgrade.js"></script>
-	<script src="js/app.save.js"></script>
-	<script src="js/app.hotkeys.js"></script>
-	<script src="js/app.js"></script>
+	<dialog id="confirm_dialog">
+		<div class="panel">
+			<form method="dialog" class="subpanel">
+				<h2 class="headline" id="confirm_dialog_title">Confirm</h2>
+				<p id="confirm_dialog_message"></p>
+				<menu class="dialog_actions">
+					<button id="confirm_dialog_cancel" type="submit" value="cancel">Cancel</button>
+					<button id="confirm_dialog_ok" type="submit" value="confirm">OK</button>
+				</menu>
+			</form>
+		</div>
+	</dialog>
+
+	<dialog id="alert_dialog">
+		<div class="panel">
+			<form method="dialog" class="subpanel">
+				<h2 class="headline" id="alert_dialog_title">Notice</h2>
+				<p id="alert_dialog_message"></p>
+				<menu class="dialog_actions">
+					<button id="alert_dialog_ok" type="submit" value="confirm">OK</button>
+				</menu>
+			</form>
+		</div>
+	</dialog>
+
+	<script type="module" src="/src/main.js"></script>
 </body>
 </html>

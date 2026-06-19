@@ -18,14 +18,14 @@ html {
 }
 
 html {
-	background: #000204;
+	background: var(--color-surface-0);
 	z-index: -2;
 }
 
 body {
 	font-size: 16px;
 	font-family: sans-serif;
-	color: #fff;
+	color: var(--color-text);
 	height: 100%;
 	display: table;
 	margin: auto;
@@ -34,11 +34,11 @@ body {
 }
 
 a {
-	color: #d3f5f6;
+	color: var(--color-link);
 }
 
 a:visited {
-	color: #c3a5f6;
+	color: var(--color-link-visited);
 }
 
 button {
@@ -84,8 +84,8 @@ button::-moz-focus-inner {
 }
 
 .button_disabled {
-  color: #aaa !important;
-  background-color: #46506b !important;
+  color: var(--color-disabled-text) !important;
+  background-color: var(--color-disabled-bg) !important;
 }
 
 #main p {
@@ -128,7 +128,7 @@ menu {
 	/* for ie */
 	float: left;
 
-	width: 261px;
+	width: var(--space-sidebar);
 	display: -webkit-flex;
 	display: flex;
 	-webkit-flex-direction: column;
@@ -193,7 +193,7 @@ menu {
 #main #heat_text {
 	position: relative;
 	z-index: 2;
-	color: #fff;
+	color: var(--color-text);
 	text-shadow:
 		1px 0 0 rgba(0, 0, 0, 1),
 		0 1px 0 rgba(0, 0, 0, 1),
@@ -219,8 +219,8 @@ menu {
 }
 
 #currency {
-	background: #59c435;
-	border-color: #198405;
+	background: var(--color-surface-2);
+	border-color: var(--color-frame);
 	border-bottom-width: 2px;
 }
 
@@ -238,28 +238,35 @@ menu {
 }
 
 #heat_percentage {
-	background-color: #f00;
+	background-color: transparent;
 }
 
 #power_percentage {
-	background-color: #33a5c6;
+	background-color: transparent;
 	max-width: 100%;
 }
 
 #parts,
 #parts > menu,
-#parts > menu > menu,
-#reactor {
+#parts > menu > menu {
 	display: table;
 }
 
+#reactor {
+	display: grid;
+	grid-template-columns: repeat(var(--cols), var(--space-tile));
+	grid-template-rows: repeat(var(--rows), var(--space-tile));
+	width: calc(var(--cols) * var(--space-tile));
+	height: calc(var(--rows) * var(--space-tile));
+}
+
 #parts_section,
-#stats_section,
-#tooltip_nav,
-#reactor_upgrades {
-	border: 10px solid #eee;
-	border-image: url("../img/border_bg.png") 10 10 stretch;
+#stats_section {
 	margin: 2px 0 0 2px;
+}
+
+#controls_toggle {
+	display: none;
 }
 
 #more_stats {
@@ -279,10 +286,10 @@ menu {
 
 #tooltip_nav {
 	padding: 4px;
-	height: 148px;
-	width: 668px;
 	width: 100%;
 	max-width: 100%;
+	min-height: 0;
+	height: auto;
 }
 
 #all_parts {
@@ -311,13 +318,15 @@ menu {
 
 #parts_section .part .image,
 #reactor .tile {
-	height: 32px;
-	width: 32px;
+	height: var(--space-tile);
+	width: var(--space-tile);
+	background-size: var(--space-tile) var(--space-tile);
 }
 
 #all_upgrades .image {
 	height: 100%;
 	width: 100%;
+	background-size: 100% 100%;
 }
 
 #parts_section .part:nth-child(6n) {
@@ -329,8 +338,8 @@ menu {
 }
 
 #parts_section .part.part_active {
-	box-shadow: 0px 0px 1px 1px #59c435;
-	background: #59c435;
+	box-shadow: 0px 0px 1px 1px var(--color-selected);
+	background: var(--color-money);
 }
 
 #parts_section .part .image,
@@ -364,7 +373,7 @@ menu {
 
 #objectives_wrapper {
 	display: table-cell;
-	background: #222C38;
+	background: var(--color-surface-2);
 	padding: 0 4px;
 	position: relative;
 	overflow: hidden;
@@ -373,8 +382,8 @@ menu {
 }
 
 #objectives_section.unloading #objectives_wrapper {
-	box-shadow: 0 0 4px 2px #0f0;
-	border: 4px solid #0f0;
+	box-shadow: 0 0 4px 2px var(--color-selected);
+	border: 4px solid var(--color-selected);
 }
 
 #objectives_content {
@@ -433,7 +442,7 @@ menu {
 	line-height: 16px;
 	text-align: right;
 	position: relative;
-	background: #222C38;
+	background: var(--color-surface-2);
 	padding-right: 2px;
 }
 
@@ -443,48 +452,59 @@ menu {
 	content: " ";
 	position: absolute;
 	left: 0;
+	background-size: var(--space-icon) var(--space-icon);
 }
 
 #stats_vent:before {
-	background-image: url("../img/icon_vent.gif");
+	background-image: url("../img/icon_vent.webp");
 }
 
 #stats_inlet:before {
-	background-image: url("../img/icon_inlet.gif");
+	background-image: url("../img/icon_inlet.webp");
 }
 
 #stats_outlet:before {
-	background-image: url("../img/icon_outlet.gif");
+	background-image: url("../img/icon_outlet.webp");
 }
 
 #stats_heat:before {
-	background-image: url("../img/icon_heat.gif");
+	background-image: url("../img/icon_heat.webp");
 }
 
 #stats_power:before {
-	background-image: url("../img/icon_power.gif");
+	background-image: url("../img/icon_power.webp");
 }
 
 #stats_cash:before {
-	background-image: url("../img/icon_cash.gif");
+	background-image: url("../img/icon_cash.webp");
 }
 
-#reactor .row {
-	white-space: nowrap;
-}
-
+#reactor reactor-tile,
 #reactor .tile {
 	display: none;
 }
 
+#reactor reactor-tile {
+	padding: 0;
+	border: none;
+	margin: 0;
+	cursor: pointer;
+	background-color: transparent;
+	font: inherit;
+	color: inherit;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
 #reactor .tile.tile_active,
 #reactor .tile:focus {
-	box-shadow: 0px 0px 1px 1px #59c435;
-	background: #59c435;
+	box-shadow: 0px 0px 1px 1px var(--color-selected);
+	background: var(--color-money);
 }
 
 #reactor .tile.enabled {
-	display: inline-block;
+	display: block;
 }
 
 #reactor .tile.disabled {
@@ -540,7 +560,7 @@ menu {
 
 #reactor .category_reflector .percent,
 #reactor .category_cell .percent {
-	background: #0f0;
+	background: var(--color-selected);
 	width: 100%;
 }
 
@@ -549,17 +569,24 @@ menu {
 #reactor .category_particle_accelerator .percent,
 #reactor .category_capacitor .percent,
 #reactor .category_vent .percent {
-	background: #f00;
+	background-color: var(--color-heat);
+	background-image: repeating-linear-gradient(
+		-45deg,
+		transparent,
+		transparent 2px,
+		rgba(0, 0, 0, 0.35) 2px,
+		rgba(0, 0, 0, 0.35) 4px
+	);
 	width: 0;
 }
 
 @keyframes explosion {
-  0%   { background: url('../img/explosion_map.gif') 32px 0 no-repeat; } 
-  100% { background: url('../img/explosion_map.gif') -192px 0 no-repeat; }
+  0%   { background: url('../img/explosion_map.webp') calc(32px * var(--asset-scale)) 0 no-repeat; }
+  100% { background: url('../img/explosion_map.webp') calc(-192px * var(--asset-scale)) 0 no-repeat; }
 }
 
 #reactor .tile.exploding {
-  background: url('../img/explosion_map.gif') -192px 0 no-repeat;
+  background: url('../img/explosion_map.webp') calc(-192px * var(--asset-scale)) 0 no-repeat;
   animation: explosion .6s steps(7);
 }
 
@@ -569,19 +596,23 @@ menu {
 
 #reactor_upgrades .explanitory button,
 #tooltip button,
-#nav button {
+#nav button,
+#page_nav button,
+#game_controls button,
+#developer_controls button {
 	padding: 0 1em .1em;
 	margin: 0;
-	border: 8px solid #76809b;
-	border-image: url("../img/small_button_off.png") 8 8 stretch;
-	background-color: #76809b;
-	color: #fff;
+	border: 8px solid var(--color-chrome);
+	border-image: url("../img/small_button_off.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	background-color: var(--color-chrome);
+	color: var(--color-text);
 	outline: none;
 	transition: background-color .01s linear;
 	line-height: 1;
 }
 
-#nav button {
+#nav button,
+#page_nav button {
 	margin-right: .25em;
 }
 
@@ -590,9 +621,15 @@ menu {
 #tooltip button:hover,
 #tooltip button:focus,
 #nav button:hover,
-#nav button:focus {
-	border-image: url("../img/small_button_on.png") 8 8 stretch;
-	background-color: #91a1c8;
+#nav button:focus,
+#page_nav button:hover,
+#page_nav button:focus,
+#game_controls button:hover,
+#game_controls button:focus,
+#developer_controls button:hover,
+#developer_controls button:focus {
+	border-image: url("../img/small_button_on.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	background-color: var(--color-chrome-hover);
 }
 
 #main.touch #tooltip_text button {
@@ -610,9 +647,12 @@ menu {
 
 #reactor_upgrades .explanitory button:active,
 #tooltip button:active,
-#nav button:active {
-	border-image: url("../img/small_button_down.png") 8 8 stretch;
-	background-color: #91a1c8;
+#nav button:active,
+#page_nav button:active,
+#game_controls button:active,
+#developer_controls button:active {
+	border-image: url("../img/small_button_down.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	background-color: var(--color-chrome-hover);
 }
 
 #tooltip_nav {
@@ -624,6 +664,155 @@ menu {
 	display: flex;
 	place-content: space-between;
 	flex-direction: column;
+}
+
+#secondary_nav {
+	display: flex;
+	place-content: space-between;
+}
+
+#page_nav {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 4px;
+}
+
+#game_controls {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 4px;
+	margin: 0;
+}
+
+#options .options-nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	margin-bottom: 0.75em;
+}
+
+#options .options-nav button {
+	margin-bottom: 0;
+}
+
+#options .options-groups {
+	display: flex;
+	flex-direction: column;
+	gap: 0.65em;
+}
+
+#options .options-group {
+	padding: 0.55em 0.65em 0.65em;
+	background: rgba(0, 0, 0, 0.12);
+	border: 4px solid var(--color-surface-2);
+	border-image: url("../img/inner_border.webp") var(--border-slice-inner) var(--border-slice-inner) stretch;
+}
+
+#options .options-group__heading {
+	font-size: var(--font-size-button);
+	line-height: 1.2;
+	margin: 0 0 0.45em;
+	padding-bottom: 0.35em;
+	border-bottom: 1px solid var(--color-frame);
+	color: var(--color-text);
+	opacity: 0.9;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+#options .options-group__switches {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin: 0;
+	padding: 0;
+}
+
+#options .options-group__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+}
+
+#options .options-group__actions--stack {
+	flex-direction: column;
+	align-items: stretch;
+}
+
+#options .options-group__actions--stack button {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+#options .options-group__actions button {
+	margin-bottom: 0;
+}
+
+#options .options-group--danger .options-group__heading {
+	color: var(--color-heat-warn);
+	border-bottom-color: rgba(249, 115, 22, 0.35);
+}
+
+#options .options-group--danger {
+	background: rgba(239, 68, 68, 0.06);
+}
+
+#options .options-button--danger {
+	color: var(--color-heat-warn);
+}
+
+#options .options-group--dev .options-group__heading {
+	opacity: 0.65;
+}
+
+.game-switch {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	min-height: 44px;
+	padding: 0 0.25em;
+	cursor: pointer;
+	user-select: none;
+}
+
+.game-switch input {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+}
+
+.game-switch__track {
+	display: inline-block;
+	width: 2.5em;
+	height: 1.25em;
+	border: 6px solid var(--color-chrome);
+	border-image: url("../img/small_button_off.webp") var(--border-slice-button-sm) var(--border-slice-button-sm) stretch;
+	background-color: var(--color-chrome);
+	box-sizing: border-box;
+	flex-shrink: 0;
+}
+
+.game-switch input:checked + .game-switch__track {
+	border-image: url("../img/small_button_on.webp") var(--border-slice-button-sm) var(--border-slice-button-sm) stretch;
+}
+
+.game-switch:active .game-switch__track,
+.game-switch input:focus-visible + .game-switch__track {
+	border-image: url("../img/small_button_down.webp") var(--border-slice-button-sm) var(--border-slice-button-sm) stretch;
+}
+
+.game-switch__label {
+	line-height: 1.2;
+	color: var(--color-text);
 }
 
 .flex_nav {
@@ -675,15 +864,29 @@ menu {
 	margin-bottom: 1em;
 }
 
-#reboot_section,
-#refund_section {
+#reboot_controls {
 	max-width: 37em;
 	margin: 2em auto 0;
+}
+
+#reboot_section,
+#refund_section {
+	max-width: none;
+	margin: 0;
 	text-align: center;
+}
+
+#refund_section {
+	margin-top: 2em;
 }
 
 #reactor_upgrades .explanitory button {
 	margin-bottom: 1em;
+}
+
+#options .options-group__actions button,
+#options .options-nav button {
+	margin-bottom: 0;
 }
 
   /* //////////////////////////
@@ -722,104 +925,104 @@ menu {
 #reactor .tile.part_uranium1,
 #upgrades .uranium .image,
 #forceful_fusion .image {
-	background-image: url("../img/cell_1_1.gif");
+	background-image: url("../img/cell_1_1.webp");
 }
 
 #parts .part.part_uranium2 .image,
 #reactor .tile.part_uranium2 {
-	background-image: url("../img/cell_1_2.gif");
+	background-image: url("../img/cell_1_2.webp");
 }
 
 #parts .part.part_uranium3 .image,
 #reactor .tile.part_uranium3 {
-	background-image: url("../img/cell_1_4.gif");
+	background-image: url("../img/cell_1_4.webp");
 }
 
 /* plutonium */
 #parts .part.part_plutonium1 .image,
 #reactor .tile.part_plutonium1,
 #upgrades .plutonium .image {
-	background-image: url("../img/cell_2_1.gif");
+	background-image: url("../img/cell_2_1.webp");
 }
 
 #parts .part.part_plutonium2 .image,
 #reactor .tile.part_plutonium2 {
-	background-image: url("../img/cell_2_2.gif");
+	background-image: url("../img/cell_2_2.webp");
 }
 
 #parts .part.part_plutonium3 .image,
 #reactor .tile.part_plutonium3 {
-	background-image: url("../img/cell_2_4.gif");
+	background-image: url("../img/cell_2_4.webp");
 }
 
 /* thorium */
 #parts .part.part_thorium1 .image,
 #reactor .tile.part_thorium1,
 #upgrades .thorium .image {
-	background-image: url("../img/cell_3_1.gif");
+	background-image: url("../img/cell_3_1.webp");
 }
 
 #parts .part.part_thorium2 .image,
 #reactor .tile.part_thorium2 {
-	background-image: url("../img/cell_3_2.gif");
+	background-image: url("../img/cell_3_2.webp");
 }
 
 #parts .part.part_thorium3 .image,
 #reactor .tile.part_thorium3 {
-	background-image: url("../img/cell_3_4.gif");
+	background-image: url("../img/cell_3_4.webp");
 }
 
 /* seaborgium */
 #parts .part.part_seaborgium1 .image,
 #reactor .tile.part_seaborgium1,
 #upgrades .seaborgium .image {
-	background-image: url("../img/cell_4_1.gif");
+	background-image: url("../img/cell_4_1.webp");
 }
 
 #parts .part.part_seaborgium2 .image,
 #reactor .tile.part_seaborgium2 {
-	background-image: url("../img/cell_4_2.gif");
+	background-image: url("../img/cell_4_2.webp");
 }
 
 #parts .part.part_seaborgium3 .image,
 #reactor .tile.part_seaborgium3 {
-	background-image: url("../img/cell_4_4.gif");
+	background-image: url("../img/cell_4_4.webp");
 }
 
 /* dolorium */
 #parts .part.part_dolorium1 .image,
 #reactor .tile.part_dolorium1,
 #upgrades .dolorium .image {
-	background-image: url("../img/cell_5_1.gif");
+	background-image: url("../img/cell_5_1.webp");
 }
 
 #parts .part.part_dolorium2 .image,
 #experimental_upgrades #infused_cells .image,
 #reactor .tile.part_dolorium2 {
-	background-image: url("../img/cell_5_2.gif");
+	background-image: url("../img/cell_5_2.webp");
 }
 
 #parts .part.part_dolorium3 .image,
 #reactor .tile.part_dolorium3 {
-	background-image: url("../img/cell_5_4.gif");
+	background-image: url("../img/cell_5_4.webp");
 }
 
 /* nefastium */
 #parts .part.part_nefastium1 .image,
 #reactor .tile.part_nefastium1,
 #upgrades .nefastium .image {
-	background-image: url("../img/cell_6_1.gif");
+	background-image: url("../img/cell_6_1.webp");
 }
 
 #parts .part.part_nefastium2 .image,
 #reactor .tile.part_nefastium2 {
-	background-image: url("../img/cell_6_2.gif");
+	background-image: url("../img/cell_6_2.webp");
 }
 
 #parts .part.part_nefastium3 .image,
 #experimental_upgrades #unleashed_cells .image,
 #reactor .tile.part_nefastium3 {
-	background-image: url("../img/cell_6_4.gif");
+	background-image: url("../img/cell_6_4.webp");
 }
 
 /* protium */
@@ -827,18 +1030,18 @@ menu {
 #reactor .tile.part_protium1,
 #experimental_upgrades #protium_cells .image,
 #upgrades .protium .image {
-	background-image: url("../img/xcell_1_1.gif");
+	background-image: url("../img/xcell_1_1.webp");
 }
 
 #parts_section .part.part_protium2 .image,
 #experimental_upgrades #unstable_protium .image,
 #reactor .tile.part_protium2 {
-	background-image: url("../img/xcell_1_2.gif");
+	background-image: url("../img/xcell_1_2.webp");
 }
 
 #parts_section .part.part_protium3 .image,
 #reactor .tile.part_protium3 {
-	background-image: url("../img/xcell_1_4.gif");
+	background-image: url("../img/xcell_1_4.webp");
 }
 
   /* //////////////////////////
@@ -850,34 +1053,34 @@ menu {
 #perpetual_reflectors .image,
 #parts .part.part_reflector1 .image,
 #reactor .tile.part_reflector1 {
-	background-image: url("../img/reflector_1.gif");
+	background-image: url("../img/reflector_1.webp");
 }
 
 #parts .part.part_reflector2 .image,
 #reactor .tile.part_reflector2 {
-	background-image: url("../img/reflector_2.gif");
+	background-image: url("../img/reflector_2.webp");
 }
 
 #parts .part.part_reflector3 .image,
 #reactor .tile.part_reflector3 {
-	background-image: url("../img/reflector_3.gif");
+	background-image: url("../img/reflector_3.webp");
 }
 
 #parts .part.part_reflector4 .image,
 #reactor .tile.part_reflector4 {
-	background-image: url("../img/reflector_4.gif");
+	background-image: url("../img/reflector_4.webp");
 }
 
 #parts .part.part_reflector5 .image,
 #experimental_upgrades #full_spectrum_reflectors .image,
 #reactor .tile.part_reflector5 {
-	background-image: url("../img/reflector_5.gif");
+	background-image: url("../img/reflector_5.webp");
 }
 
 #parts .part.part_reflector6 .image,
 #experimental_upgrades #heat_reflection .image,
 #reactor .tile.part_reflector6 {
-	background-image: url("../img/reflector_6.gif");
+	background-image: url("../img/reflector_6.webp");
 }
 
   /* //////////////////////////
@@ -891,34 +1094,34 @@ menu {
 #active_exchangers .image,
 #improved_power_lines .image,
 #improved_wiring .image {
-	background-image: url("../img/capacitor_1.gif");
+	background-image: url("../img/capacitor_1.webp");
 }
 
 #parts .part.part_capacitor2 .image,
 #reactor .tile.part_capacitor2{
-	background-image: url("../img/capacitor_2.gif");
+	background-image: url("../img/capacitor_2.webp");
 }
 
 #parts .part.part_capacitor3 .image,
 #reactor .tile.part_capacitor3{
-	background-image: url("../img/capacitor_3.gif");
+	background-image: url("../img/capacitor_3.webp");
 }
 
 #parts .part.part_capacitor4 .image,
 #reactor .tile.part_capacitor4{
-	background-image: url("../img/capacitor_4.gif");
+	background-image: url("../img/capacitor_4.webp");
 }
 
 #parts .part.part_capacitor5 .image,
 #experimental_upgrades #quantum_buffering .image,
 #reactor .tile.part_capacitor5 {
-	background-image: url("../img/capacitor_5.gif");
+	background-image: url("../img/capacitor_5.webp");
 }
 
 #parts .part.part_capacitor6 .image,
 #experimental_upgrades #experimental_capacitance .image,
 #reactor .tile.part_capacitor6{
-	background-image: url("../img/capacitor_6.gif");
+	background-image: url("../img/capacitor_6.webp");
 }
 
   /* //////////////////////////
@@ -929,166 +1132,166 @@ menu {
 #parts .part.part_vent1 .image,
 #reactor .tile.part_vent1,
 #improved_heat_vents .image {
-	background-image: url("../img/vent_1.gif");
+	background-image: url("../img/vent_1.webp");
 }
 
 #parts .part.part_vent2 .image,
 #reactor .tile.part_vent2 {
-	background-image: url("../img/vent_2.gif");
+	background-image: url("../img/vent_2.webp");
 }
 
 #parts .part.part_vent3 .image,
 #reactor .tile.part_vent3 {
-	background-image: url("../img/vent_3.gif");
+	background-image: url("../img/vent_3.webp");
 }
 
 #parts .part.part_vent4 .image,
 #reactor .tile.part_vent4 {
-	background-image: url("../img/vent_4.gif");
+	background-image: url("../img/vent_4.webp");
 }
 
 #parts .part.part_vent5 .image,
 #experimental_upgrades #fluid_hyperdynamics .image,
 #reactor .tile.part_vent5 {
-	background-image: url("../img/vent_5.gif");
+	background-image: url("../img/vent_5.webp");
 }
 
 #parts .part.part_vent6 .image,
 #experimental_upgrades #vortex_cooling .image,
 #reactor .tile.part_vent6 {
-	background-image: url("../img/vent_6.gif");
+	background-image: url("../img/vent_6.webp");
 }
 
 /* Heat Exchangers */
 #parts .part.part_heat_exchanger1 .image,
 #reactor .tile.part_heat_exchanger1,
 #improved_heat_exchangers .image {
-	background-image: url("../img/exchanger_1.gif");
+	background-image: url("../img/exchanger_1.webp");
 }
 
 #parts .part.part_heat_exchanger2 .image,
 #reactor .tile.part_heat_exchanger2 {
-	background-image: url("../img/exchanger_2.gif");
+	background-image: url("../img/exchanger_2.webp");
 }
 
 #parts .part.part_heat_exchanger3 .image,
 #reactor .tile.part_heat_exchanger3 {
-	background-image: url("../img/exchanger_3.gif");
+	background-image: url("../img/exchanger_3.webp");
 }
 
 #parts .part.part_heat_exchanger4 .image,
 #reactor .tile.part_heat_exchanger4 {
-	background-image: url("../img/exchanger_4.gif");
+	background-image: url("../img/exchanger_4.webp");
 }
 
 #parts .part.part_heat_exchanger5 .image,
 #experimental_upgrades #fractal_piping .image,
 #reactor .tile.part_heat_exchanger5 {
-	background-image: url("../img/exchanger_5.gif");
+	background-image: url("../img/exchanger_5.webp");
 }
 
 #parts .part.part_heat_exchanger6 .image,
 #experimental_upgrades #underground_heat_extraction .image,
 #reactor .tile.part_heat_exchanger6 {
-	background-image: url("../img/exchanger_6.gif");
+	background-image: url("../img/exchanger_6.webp");
 }
 
 /* Heat Inlets */
 #parts .part.part_heat_inlet1 .image,
 #reactor .tile.part_heat_inlet1 {
-	background-image: url("../img/inlet_1.gif");
+	background-image: url("../img/inlet_1.webp");
 }
 
 #parts .part.part_heat_inlet2 .image,
 #reactor .tile.part_heat_inlet2 {
-	background-image: url("../img/inlet_2.gif");
+	background-image: url("../img/inlet_2.webp");
 }
 
 #parts .part.part_heat_inlet3 .image,
 #reactor .tile.part_heat_inlet3 {
-	background-image: url("../img/inlet_3.gif");
+	background-image: url("../img/inlet_3.webp");
 }
 
 #parts .part.part_heat_inlet4 .image,
 #reactor .tile.part_heat_inlet4 {
-	background-image: url("../img/inlet_4.gif");
+	background-image: url("../img/inlet_4.webp");
 }
 
 #parts .part.part_heat_inlet5 .image,
 #reactor .tile.part_heat_inlet5 {
-	background-image: url("../img/inlet_5.gif");
+	background-image: url("../img/inlet_5.webp");
 }
 
 #parts .part.part_heat_inlet6 .image,
 #experimental_upgrades #vortex_extraction .image,
 #reactor .tile.part_heat_inlet6 {
-	background-image: url("../img/inlet_6.gif");
+	background-image: url("../img/inlet_6.webp");
 }
 
 /* Heat Outlets */
 #parts .part.part_heat_outlet1 .image,
 #reactor .tile.part_heat_outlet1 {
-	background-image: url("../img/outlet_1.gif");
+	background-image: url("../img/outlet_1.webp");
 }
 
 #parts .part.part_heat_outlet2 .image,
 #reactor .tile.part_heat_outlet2 {
-	background-image: url("../img/outlet_2.gif");
+	background-image: url("../img/outlet_2.webp");
 }
 
 #parts .part.part_heat_outlet3 .image,
 #reactor .tile.part_heat_outlet3 {
-	background-image: url("../img/outlet_3.gif");
+	background-image: url("../img/outlet_3.webp");
 }
 
 #parts .part.part_heat_outlet4 .image,
 #reactor .tile.part_heat_outlet4 {
-	background-image: url("../img/outlet_4.gif");
+	background-image: url("../img/outlet_4.webp");
 }
 
 #parts .part.part_heat_outlet5 .image,
 #reactor .tile.part_heat_outlet5 {
-	background-image: url("../img/outlet_5.gif");
+	background-image: url("../img/outlet_5.webp");
 }
 
 #parts .part.part_heat_outlet6 .image,
 #experimental_upgrades #explosive_ejection .image,
 #reactor .tile.part_heat_outlet6 {
-	background-image: url("../img/outlet_6.gif");
+	background-image: url("../img/outlet_6.webp");
 }
 
 /* Coolant Cells */
 #improved_coolant_cells .image,
 #parts .part.part_coolant_cell1 .image,
 #reactor .tile.part_coolant_cell1 {
-	background-image: url("../img/coolant_1.gif");
+	background-image: url("../img/coolant_1.webp");
 }
 
 #parts .part.part_coolant_cell2 .image,
 #reactor .tile.part_coolant_cell2 {
-	background-image: url("../img/coolant_2.gif");
+	background-image: url("../img/coolant_2.webp");
 }
 
 #parts .part.part_coolant_cell3 .image,
 #reactor .tile.part_coolant_cell3 {
-	background-image: url("../img/coolant_3.gif");
+	background-image: url("../img/coolant_3.webp");
 }
 
 #parts .part.part_coolant_cell4 .image,
 #reactor .tile.part_coolant_cell4 {
-	background-image: url("../img/coolant_4.gif");
+	background-image: url("../img/coolant_4.webp");
 }
 
 #parts .part.part_coolant_cell5 .image,
 #experimental_upgrades #ultracryonics .image,
 #reactor .tile.part_coolant_cell5 {
-	background-image: url("../img/coolant_5.gif");
+	background-image: url("../img/coolant_5.webp");
 }
 
 #parts .part.part_coolant_cell6 .image,
 #experimental_upgrades #thermionic_conversion .image,
 #reactor .tile.part_coolant_cell6 {
-	background-image: url("../img/coolant_6.gif");
+	background-image: url("../img/coolant_6.webp");
 }
 
 /* Platings */
@@ -1098,34 +1301,34 @@ menu {
 #reinforced_heat_exchangers .image,
 #upgrades #improved_piping .image,
 #upgrades #improved_alloys .image {
-	background-image: url("../img/plating_1.gif");
+	background-image: url("../img/plating_1.webp");
 }
 
 #parts .part.part_reactor_plating2 .image,
 #reactor .tile.part_reactor_plating2 {
-	background-image: url("../img/plating_2.gif");
+	background-image: url("../img/plating_2.webp");
 }
 
 #parts .part.part_reactor_plating3 .image,
 #reactor .tile.part_reactor_plating3 {
-	background-image: url("../img/plating_3.gif");
+	background-image: url("../img/plating_3.webp");
 }
 
 #parts .part.part_reactor_plating4 .image,
 #reactor .tile.part_reactor_plating4 {
-	background-image: url("../img/plating_4.gif");
+	background-image: url("../img/plating_4.webp");
 }
 
 #parts .part.part_reactor_plating5 .image,
 #experimental_upgrades #phlembotinum_core .image,
 #reactor .tile.part_reactor_plating5 {
-	background-image: url("../img/plating_5.gif");
+	background-image: url("../img/plating_5.webp");
 }
 
 #parts .part.part_reactor_plating6 .image,
 #experimental_upgrades #micro_capacitance .image,
 #reactor .tile.part_reactor_plating6 {
-	background-image: url("../img/plating_6.gif");
+	background-image: url("../img/plating_6.webp");
 }
 
 /* Particle Accelerators */
@@ -1133,44 +1336,44 @@ menu {
 #upgrades #improved_particle_accelerators .image,
 #experimental_upgrades #improved_particle_accelerators1 .image,
 #reactor .tile.part_particle_accelerator1 {
-	background-image: url("../img/accelerator_1.gif");
+	background-image: url("../img/accelerator_1.webp");
 }
 
 #parts .part.part_particle_accelerator2 .image,
 #experimental_upgrades #improved_particle_accelerators2 .image,
 #reactor .tile.part_particle_accelerator2 {
-	background-image: url("../img/accelerator_2.gif");
+	background-image: url("../img/accelerator_2.webp");
 }
 
 #parts .part.part_particle_accelerator3 .image,
 #experimental_upgrades #improved_particle_accelerators3 .image,
 #reactor .tile.part_particle_accelerator3 {
-	background-image: url("../img/accelerator_3.gif");
+	background-image: url("../img/accelerator_3.webp");
 }
 
 #parts .part.part_particle_accelerator4 .image,
 #experimental_upgrades #improved_particle_accelerators4 .image,
 #reactor .tile.part_particle_accelerator4 {
-	background-image: url("../img/accelerator_4.gif");
+	background-image: url("../img/accelerator_4.webp");
 }
 
 #parts .part.part_particle_accelerator5 .image,
 #experimental_upgrades #improved_particle_accelerators5 .image,
 #reactor .tile.part_particle_accelerator5 {
-	background-image: url("../img/accelerator_5.gif");
+	background-image: url("../img/accelerator_5.webp");
 }
 
 #parts .part.part_particle_accelerator6 .image,
 #experimental_upgrades #improved_particle_accelerators6 .image,
 #experimental_upgrades #singularity_harnessing .image,
 #reactor .tile.part_particle_accelerator6 {
-	background-image: url("../img/accelerator_6.gif");
+	background-image: url("../img/accelerator_6.webp");
 }
 
 /* Other */
 
 #experimental_upgrades #laboratory .image {
-	background-image: url("../img/lab.gif");
+	background-image: url("../img/lab.webp");
 }
 
   /* //////////////////////////
@@ -1188,19 +1391,21 @@ menu {
 #all_upgrades .image:before {
 	top: auto;
 	bottom: 0;
+	background-size: var(--space-status) var(--space-status);
 }
 
 #all_upgrades .image:after {
 	left: 50%;
-	margin-left: -16px;
+	margin-left: calc(-1 * var(--space-status) / 2);
 	top: 50%;
-	margin-top: -16px;
+	margin-top: calc(-1 * var(--space-status) / 2);
+	background-size: var(--space-status) var(--space-status);
 }
 
 /* Time */
 #improved_reflector_density .image:before,
 #all_upgrades .cell_tick .image:before {
-	background-image: url("../img/status_time.gif");
+	background-image: url("../img/status_time.webp");
 	z-index: 2;
 }
 
@@ -1211,7 +1416,7 @@ menu {
 #forceful_fusion .image:before,
 #improved_wiring .image:before,
 #improved_alloys .image:before {
-	background-image: url("../img/status_plus.gif");
+	background-image: url("../img/status_plus.webp");
 	z-index: 2;
 }
 
@@ -1220,7 +1425,7 @@ menu {
 #improved_power_lines .image:before,
 #improved_piping .image:before,
 #all_upgrades .cell_power .image:before {
-	background-image: url("../img/status_bolt.gif");
+	background-image: url("../img/status_bolt.webp");
 	z-index: 2;
 }
 
@@ -1228,7 +1433,7 @@ menu {
 #perpetual_capacitors .image:before,
 #perpetual_reflectors .image:before,
 #all_upgrades .cell_perpetual .image:before {
-	background-image: url("../img/status_infinity.gif");
+	background-image: url("../img/status_infinity.webp");
 	z-index: 2;
 }
 
@@ -1238,7 +1443,7 @@ menu {
 	text-indent: 0;
 	right: 2px;
 	bottom: 2px;
-	color: #fff;
+	color: var(--color-text);
 	font-size: 14px;
 	text-shadow:
 		1px 0 0 rgba(0, 0, 0, 1),
@@ -1263,20 +1468,20 @@ menu {
 }*/
 
 #chronometer.upgrade .image {
-	background-image: url("../img/upgrade_flux.gif");
+	background-image: url("../img/upgrade_flux.webp");
 }
 
 #heat_outlet_control_operator.upgrade .image,
 #heat_control_operator.upgrade .image {
-	background-image: url("../img/upgrade_computer.gif");
+	background-image: url("../img/upgrade_computer.webp");
 }
 
 #expand_reactor_cols.upgrade .image {
-	background-image: url("../img/upgrade_cols.gif");
+	background-image: url("../img/upgrade_cols.webp");
 }
 
 #expand_reactor_rows.upgrade .image {
-	background-image: url("../img/upgrade_rows.gif");
+	background-image: url("../img/upgrade_rows.webp");
 }
 
 #all_upgrades .unaffordable .image {
@@ -1287,26 +1492,29 @@ menu {
  // Tooltips
 ////////////////////////// */
 
-#tooltip {
+	#tile-inspector {
 	display: none;
-	height: 100%;
-	-webkit-flex-grow: 1;
-	flex-grow: 1;
-
-	width: auto;
-	max-width: 100%;
+	pointer-events: none;
+	border: none;
+	background: transparent;
+	padding: 0;
+	box-sizing: border-box;
+	min-width: 0;
+	min-height: 0;
 }
 
-.touch #tooltip {
-	position: relative;
+#main.inspector_showing #tile-inspector {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+#tile-inspector > :first-child {
+	margin-right: .6em;
 }
 
 #tooltip_text button {
 	display: none;
-}
-
-#tooltip > :first-child {
-	margin-right: .6em;
 }
 
 #tooltip_text {
@@ -1352,16 +1560,92 @@ menu {
 	content: "Cost: ";
 }
 
-#main.tooltip_showing #tooltip {
-	/* for ie */
-	display: block;
-
-	display: -webkit-flex;
-	display: flex;
+#main.modal_open #reactor_viewport,
+#main.modal_open #reactor {
+	pointer-events: none;
 }
 
-#main.tooltip_showing #nav {
-	display: none;
+dialog::backdrop {
+	background: rgba(0, 0, 0, 0.65);
+}
+
+dialog {
+	background-color: var(--color-surface-2);
+	border: 2px solid var(--color-chrome);
+	border-radius: var(--radius-panel);
+	color: var(--color-text);
+	font-family: var(--font-ui);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+	padding: 0;
+	max-width: min(90vw, 420px);
+}
+
+dialog .panel {
+	min-width: min(90vw, 420px);
+	border: none;
+	background: transparent;
+	margin: 0;
+	padding: 0;
+}
+
+dialog .subpanel {
+	padding: 16px;
+	border: none;
+	border-image: none;
+	background: transparent;
+}
+
+dialog .headline {
+	margin-bottom: 0.5em;
+}
+
+dialog p {
+	margin-bottom: 1em;
+	line-height: 1.4;
+}
+
+dialog .dialog_actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	float: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+dialog .dialog_actions button {
+	padding: 0 1em 0.1em;
+	margin: 0;
+	border: 8px solid var(--color-chrome);
+	border-image: url("../img/small_button_off.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	background-color: var(--color-chrome);
+	color: var(--color-text);
+	outline: none;
+	line-height: 1;
+	min-height: 44px;
+	white-space: nowrap;
+}
+
+dialog .dialog_actions button:hover,
+dialog .dialog_actions button:focus {
+	border-image: url("../img/small_button_on.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	background-color: var(--color-chrome-hover);
+}
+
+dialog .dialog_actions button:active {
+	border-image: url("../img/small_button_down.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	transform: translateY(2px);
+}
+
+dialog #txtImportExport {
+	width: 100%;
+	box-sizing: border-box;
+	margin-bottom: 1em;
+	background: var(--color-surface-0);
+	color: var(--color-text);
+	border: 1px solid var(--color-frame);
+	font-family: var(--font-data);
 }
 
   /* //////////////////////////
@@ -1398,9 +1682,9 @@ menu {
 ////////////////////////// */
 #main:before {
 	content: " ";
-	border: 10px solid #30424b;
-	border-image: url("../img/connector_border.png") 10 10 stretch;
-	background-color: #30424b;
+	border: 10px solid var(--color-frame);
+	border-image: url("../img/connector_border.webp") var(--border-slice-connector) var(--border-slice-connector) stretch;
+	background-color: var(--color-frame);
 	position: absolute;
 	left: 4px;
 	top: 4px;
@@ -1410,17 +1694,17 @@ menu {
 }
 
 #main .panel_holder:first-child .panel:first-child {
-	border: 12px solid #485667;
-	border-image: url("../img/panel_border_first_first.png") 12 12 stretch;
-	background-color: #485667;
+	border: 12px solid var(--color-surface-1);
+	border-image: url("../img/panel_border_first_first.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
+	background-color: var(--color-surface-1);
 	margin: 0 3px 0 0;
 	padding: 6px 0 2px 6px;
 }
 
 #main .panel_holder:first-child .panel:last-child {
-	border: 12px solid #485667;
-	border-image: url("../img/panel_border_first_last.png") 12 12 stretch;
-	background-color: #485667;
+	border: 12px solid var(--color-surface-1);
+	border-image: url("../img/panel_border_first_last.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
+	background-color: var(--color-surface-1);
 	margin: 4px 3px 0 0;
 	padding: 2px 0 6px 6px;
 	-webkit-flex: 1;
@@ -1428,22 +1712,22 @@ menu {
 	flex: 1; */
 }
 
-#main .panel_holder:last-child .panel {
-	border: 12px solid #485667;
-	border-image: url("../img/panel_border_last_middle.png") 12 12 stretch;
-	background-color: #485667;
+#main #primary > .panel {
+	border: 12px solid var(--color-surface-1);
+	border-image: url("../img/panel_border_last_middle.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
+	background-color: var(--color-surface-1);
 	margin: 0 0 4px 0;
 	padding: 2px 6px 2px 2px;
 }
 
-#main .panel_holder:last-child .panel:first-child {
-	border-image: url("../img/panel_border_last_first.png") 12 12 stretch;
+#main #primary > .panel:first-child {
+	border-image: url("../img/panel_border_last_first.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
 	margin: 0 0 4px 0;
 	padding: 6px 4px 2px 2px;
 }
 
-#main .panel_holder:last-child .panel:last-child {
-	border-image: url("../img/panel_border_last_last.png") 12 12 stretch;
+#main #primary > .panel:last-child {
+	border-image: url("../img/panel_border_last_last.webp") var(--border-slice-panel) var(--border-slice-panel) stretch;
 	padding: 0 6px 6px 2px;
 	margin: 0;
 	-webkit-flex: 1;
@@ -1452,8 +1736,8 @@ menu {
 
 #reactor_stats .stat,
 #main .subpanel {
-	border: 4px solid #222C38;
-	border-image: url("../img/inner_border.png") 4 4 stretch;
+	border: 4px solid var(--color-surface-2);
+	border-image: url("../img/inner_border.webp") var(--border-slice-inner) var(--border-slice-inner) stretch;
 }
 
 /*#parts_nav_top,
@@ -1462,43 +1746,43 @@ menu {
 	z-index: 1;
 	width: 100%;
 	left: 0;
-	color: #fff;
+	color: var(--color-text);
 }
 
 #parts_nav_top {
 	border: 8px solid #eee;
-	border-image: url("../img/inner_border_alt.png") 8 8 stretch;
-	background-color: #76809b;
+	border-image: url("../img/inner_border_alt.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	background-color: var(--color-chrome);
 	width: 100%;
 	top: 0;
 }
 
 #parts_nav_top:hover,
 #parts_nav_top:focus {
-	border-image: url("../img/inner_border_alt_active.png") 8 8 stretch;
+	border-image: url("../img/inner_border_alt_active.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: #96a0bb;
 }
 
 #parts_nav_top:active {
-	border-image: url("../img/inner_border_alt_down.png") 8 8 stretch;
+	border-image: url("../img/inner_border_alt_down.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: #96a0bb;
 }*/
 
 #stats_section button {
-	border: 8px solid #76809b;
-	border-image: url("../img/inner_border_alt_flip.png") 8 8 stretch;
-	background-color: #76809b;
+	border: 8px solid var(--color-chrome);
+	border-image: url("../img/inner_border_alt_flip.webp") var(--border-slice-button) var(--border-slice-button) stretch;
+	background-color: var(--color-chrome);
 	bottom: 0;
-	color: #fff;
+	color: var(--color-text);
 }
 
 #stats_section button:hover,
 #stats_section button:focus {
-	border-image: url("../img/inner_border_alt_flip_active.png") 8 8 stretch;
+	border-image: url("../img/inner_border_alt_flip_active.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: #96a0bb;
 }
 
 #stats_section button:active {
-	border-image: url("../img/inner_border_alt_flip_down.png") 8 8 stretch;
+	border-image: url("../img/inner_border_alt_flip_down.webp") var(--border-slice-button) var(--border-slice-button) stretch;
 	background-color: #96a0bb;
 }

@@ -1,0 +1,334 @@
+#wrapper {
+	position: relative;
+}
+
+#wrapper::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: 9998;
+	pointer-events: none;
+	box-shadow: inset 0 0 min(120px, 18vw) rgba(220, 38, 38, calc(var(--heat-vignette) * 0.55));
+	opacity: var(--heat-vignette);
+	animation: heat-vignette-pulse 1.6s ease-in-out infinite;
+}
+
+#wrapper::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	pointer-events: none;
+	opacity: 0.035;
+	background:
+		repeating-linear-gradient(
+			0deg,
+			rgba(0, 0, 0, 0.14) 0,
+			rgba(0, 0, 0, 0.14) 1px,
+			transparent 1px,
+			transparent 3px
+		),
+		radial-gradient(ellipse at center, transparent 58%, rgba(0, 0, 0, 0.22) 100%);
+}
+
+@keyframes heat-vignette-pulse {
+	0%, 100% { opacity: calc(var(--heat-vignette) * 0.85); }
+	50% { opacity: var(--heat-vignette); }
+}
+
+#reactor_upgrades .explanitory button,
+#tooltip button,
+#nav button,
+#page_nav button,
+#game_controls button,
+#developer_controls button {
+	position: relative;
+	transition: background-color 0.08s linear, box-shadow 0.08s linear, transform 0.05s linear;
+}
+
+#reactor_upgrades .explanitory button:hover,
+#reactor_upgrades .explanitory button:focus,
+#tooltip button:hover,
+#tooltip button:focus,
+#nav button:hover,
+#nav button:focus,
+#page_nav button:hover,
+#page_nav button:focus,
+#game_controls button:hover,
+#game_controls button:focus,
+#developer_controls button:hover,
+#developer_controls button:focus {
+	box-shadow:
+		inset 0 0 0 1px var(--color-amber-glow),
+		inset 0 1px 0 rgba(255, 220, 140, 0.15);
+	background-color: var(--color-chrome-warm);
+}
+
+#reactor_upgrades .explanitory button:active,
+#tooltip button:active,
+#nav button:active,
+#page_nav button:active,
+#game_controls button:active,
+#developer_controls button:active {
+	transform: translateY(2px);
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.game-switch {
+	position: relative;
+	align-items: center;
+}
+
+.game-switch[data-led]::before {
+	content: "";
+	width: 4px;
+	height: 4px;
+	flex-shrink: 0;
+	align-self: center;
+	image-rendering: pixelated;
+	box-shadow: 0 0 3px currentColor;
+}
+
+.game-switch[data-led="on"]::before {
+	background: var(--color-led-on);
+	color: var(--color-led-on);
+}
+
+.game-switch[data-led="off"]::before {
+	background: var(--color-led-off);
+	color: var(--color-led-off);
+}
+
+.game-switch[data-led="alarm"]::before {
+	background: var(--color-led-alarm);
+	color: var(--color-led-alarm);
+	animation: led-alarm-blink 0.9s step-end infinite;
+}
+
+.game-switch:active .game-switch__label {
+	transform: translateY(1px);
+}
+
+.game-switch__label {
+	transition: transform 0.05s linear;
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+#game_controls button[data-led]::after,
+#developer_controls button[data-led]::after {
+	content: "";
+	position: absolute;
+	right: 4px;
+	bottom: 4px;
+	width: 4px;
+	height: 4px;
+	image-rendering: pixelated;
+	box-shadow: 0 0 3px currentColor;
+}
+
+#game_controls button[data-led="on"]::after,
+#developer_controls button[data-led="on"]::after {
+	background: var(--color-led-on);
+	color: var(--color-led-on);
+}
+
+#game_controls button[data-led="off"]::after,
+#developer_controls button[data-led="off"]::after {
+	background: var(--color-led-off);
+	color: var(--color-led-off);
+}
+
+@keyframes led-alarm-blink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.35; }
+}
+
+#options .options-button--danger:hover,
+#options .options-button--danger:focus {
+	box-shadow:
+		inset 0 0 0 1px rgba(249, 115, 22, 0.55),
+		inset 0 1px 0 rgba(255, 180, 120, 0.15);
+	background-color: var(--color-chrome-warm);
+}
+
+#currency {
+	background: var(--color-surface-2);
+	border-color: var(--color-frame);
+}
+
+#money,
+#money_wrapper,
+#current_heat,
+#max_heat,
+#current_power,
+#max_power,
+#heat_per_tick,
+#power_per_tick,
+#money_per_tick,
+#current_exotic_particles,
+#exotic_particles,
+#time_flux,
+#all_upgrades .upgrade .levels,
+#experimental_upgrades .upgrade .levels {
+	font-family: var(--font-data);
+	font-variant-numeric: tabular-nums;
+}
+
+#money,
+#money_wrapper {
+	color: var(--color-money);
+	text-shadow:
+		0 0 6px var(--color-money-glow),
+		1px 0 0 rgba(0, 0, 0, 1),
+		0 1px 0 rgba(0, 0, 0, 1),
+		-1px 0 0 rgba(0, 0, 0, 1),
+		0 -1px 0 rgba(0, 0, 0, 1),
+		1px 1px 0 rgba(0, 0, 0, 1),
+		-1px -1px 0 rgba(0, 0, 0, 1),
+		1px -1px 0 rgba(0, 0, 0, 1),
+		-1px 1px 0 rgba(0, 0, 0, 1);
+}
+
+#power_percentage,
+#heat_percentage {
+	background-color: transparent;
+	background-image: repeating-linear-gradient(
+		90deg,
+		var(--bar-segment-color, var(--color-power)) 0,
+		var(--bar-segment-color, var(--color-power)) 3px,
+		transparent 3px,
+		transparent 5px
+	);
+}
+
+#heat_percentage {
+	--bar-segment-color: var(--color-heat);
+}
+
+#power_percentage {
+	--bar-segment-color: var(--color-power);
+}
+
+#heat_indicator.heat-warning #heat_percentage {
+	--bar-segment-color: var(--color-heat-warn);
+}
+
+#heat_text,
+#power_text {
+	text-shadow:
+		1px 0 0 rgba(0, 0, 0, 1),
+		0 1px 0 rgba(0, 0, 0, 1),
+		-1px 0 0 rgba(0, 0, 0, 1),
+		0 -1px 0 rgba(0, 0, 0, 1),
+		1px 1px 0 rgba(0, 0, 0, 1),
+		-1px -1px 0 rgba(0, 0, 0, 1),
+		1px -1px 0 rgba(0, 0, 0, 1),
+		-1px 1px 0 rgba(0, 0, 0, 1);
+}
+
+#all_upgrades .upgrade,
+#experimental_upgrades .upgrade {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	width: auto;
+	height: auto;
+	padding: 3px;
+	box-sizing: border-box;
+	vertical-align: top;
+	border: 2px solid var(--color-frame);
+	background:
+		linear-gradient(160deg, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+		linear-gradient(180deg, #2e3a45 0%, #1a222b 100%);
+	box-shadow:
+		inset 0 0 0 1px rgba(0, 0, 0, 0.45),
+		inset 0 1px 0 rgba(255, 255, 255, 0.07),
+		0 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+#all_upgrades .upgrade:hover,
+#experimental_upgrades .upgrade:hover {
+	border-color: var(--color-chrome);
+	box-shadow:
+		inset 0 0 0 1px var(--color-amber-glow),
+		inset 0 1px 0 rgba(255, 255, 255, 0.1),
+		0 0 6px rgba(255, 184, 48, 0.12);
+}
+
+#all_upgrades .upgrade:active,
+#experimental_upgrades .upgrade:active {
+	transform: translateY(1px);
+}
+
+#all_upgrades .image,
+#experimental_upgrades .image {
+	width: 2.5em;
+	height: 2.5em;
+	flex-shrink: 0;
+	border: 1px solid rgba(0, 0, 0, 0.55);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+#all_upgrades .upgrade .levels,
+#experimental_upgrades .upgrade .levels {
+	position: static;
+	display: block;
+	width: 100%;
+	margin-top: 2px;
+	padding: 1px 0 0;
+	text-align: center;
+	font-size: 10px;
+	line-height: 1;
+	color: var(--color-chrome-hover);
+	text-shadow:
+		1px 0 0 rgba(0, 0, 0, 1),
+		0 1px 0 rgba(0, 0, 0, 1),
+		-1px 0 0 rgba(0, 0, 0, 1),
+		0 -1px 0 rgba(0, 0, 0, 1),
+		1px 1px 0 rgba(0, 0, 0, 1),
+		-1px -1px 0 rgba(0, 0, 0, 1),
+		1px -1px 0 rgba(0, 0, 0, 1),
+		-1px 1px 0 rgba(0, 0, 0, 1);
+}
+
+#reactor .tile.tile-placed::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 4;
+	pointer-events: none;
+	background:
+		radial-gradient(circle at 50% 50%, rgba(89, 196, 53, 0.85) 0%, rgba(51, 165, 198, 0.45) 35%, transparent 65%);
+	animation: tile-place-flash 0.4s steps(4) forwards;
+}
+
+@keyframes tile-place-flash {
+	0% { opacity: 1; transform: scale(0.85); }
+	100% { opacity: 0; transform: scale(1.15); }
+}
+
+#reactor .category_vent .percent,
+#reactor .category_capacitor .percent,
+#reactor .category_heat_exchanger .percent,
+#reactor .category_particle_accelerator .percent,
+#reactor .category_coolant_cell .percent {
+	background-image: repeating-linear-gradient(
+		90deg,
+		var(--color-heat) 0,
+		var(--color-heat) 2px,
+		rgba(0, 0, 0, 0.35) 2px,
+		rgba(0, 0, 0, 0.35) 3px
+	);
+}
+
+#reactor .category_cell .percent,
+#reactor .category_reflector .percent {
+	background-image: repeating-linear-gradient(
+		90deg,
+		var(--color-selected) 0,
+		var(--color-selected) 2px,
+		rgba(0, 0, 0, 0.35) 2px,
+		rgba(0, 0, 0, 0.35) 3px
+	);
+}

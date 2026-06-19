@@ -1,0 +1,6 @@
+node_modules/
+dist/
+scripts/ui-screenshot-output/
+scripts/ui-audit-output/
+.DS_Store
+*.log
